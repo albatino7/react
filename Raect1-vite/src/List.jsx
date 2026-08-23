@@ -7,7 +7,7 @@ const List = () => {
   return (
     <>
       {users.map((users) => (
-        <h2>
+        <h2 key={users.id}>
           id: {users.id} name: {users.name}
         </h2>
       ))}
