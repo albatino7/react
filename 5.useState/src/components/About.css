@@ -1,0 +1,146 @@
+/* Mobile first */
+
+.counter-container {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f7fb;
+  transition: 0.3s ease;
+}
+
+.counter-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #222;
+}
+
+.counter-card p {
+  margin: 8px 0 0;
+  color: #777;
+}
+
+.theme-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.count {
+  margin: 25px 0;
+  font-size: 52px;
+  font-weight: 700;
+  color: #222;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.button-group button {
+  width: 100%;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.increase-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.decrease-btn {
+  background: #e5e7eb;
+  color: #222;
+}
+
+.button-group button:hover {
+  transform: translateY(-2px);
+}
+
+/* ===================== */
+/* DARK MODE */
+/* ===================== */
+
+.counter-container.dark {
+  background: #111827;
+}
+
+.counter-container.dark .counter-card {
+  background: #1f2937;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.counter-container.dark .top-bar h1 {
+  color: #f9fafb;
+}
+
+.counter-container.dark .counter-card p {
+  color: #9ca3af;
+}
+
+.counter-container.dark .count {
+  color: #f9fafb;
+}
+
+.counter-container.dark .theme-btn {
+  background: #374151;
+}
+
+/* Tablet */
+
+@media (min-width: 600px) {
+  .counter-card {
+    padding: 40px;
+  }
+
+  .button-group {
+    flex-direction: row;
+  }
+
+  .button-group button {
+    width: auto;
+    min-width: 140px;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 900px) {
+  .counter-card {
+    max-width: 450px;
+    padding: 45px;
+  }
+
+  .top-bar h1 {
+    font-size: 28px;
+  }
+}
