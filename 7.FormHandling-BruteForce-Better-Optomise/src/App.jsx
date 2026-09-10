@@ -6,6 +6,7 @@ import OptamizeApproach from "./forms/OptamizeApproach.jsx";
 const App = () => {
   return (
     <div>
+      App component
       <BruteForce />
       <BetterApproach />
       <OptamizeApproach />
