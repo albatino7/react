@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 
-const Form = ({ setUserData, setToggle, handleUpdate, setHandleUpdate }) => {
+const Form = ({
+  setUserData,
+  setToggle,
+  handleUpdate,
+  setHandleUpdate,
+  userData,
+}) => {
   const {
     register,
     handleSubmit,
@@ -31,7 +37,14 @@ const Form = ({ setUserData, setToggle, handleUpdate, setHandleUpdate }) => {
         ...data,
       };
 
+      //curently my browser is stopping to use localstorage
+      // let freshUser = [...userData, newUser];
+      // setUserData(freshUser);
+      // console.log(freshUser);
+
       setUserData((prev) => [...prev, newUser]);
+      //   setUserData((prev) => [...prev, newUser]);
+      // localStorage.setItem("userData", JSON.stringify(freshUser));
     }
 
     setToggle((prev) => !prev);

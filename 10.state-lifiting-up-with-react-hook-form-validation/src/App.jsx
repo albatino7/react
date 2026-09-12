@@ -8,6 +8,11 @@ const App = () => {
   const [handleUpdate, setHandleUpdate] = useState(null);
   console.log(handleUpdate);
   console.log(userData);
+
+  // my vite unabel to load localStorage
+  // localStorage.setItem("name", "Atul DEMOND");
+  // localStorage.getItem("name");
+
   return (
     <div className="min-h-screen bg-gray-100">
       {" "}
@@ -38,6 +43,7 @@ const App = () => {
               handleUpdate={handleUpdate}
               toggle={toggle}
               setHandleUpdate={setHandleUpdate}
+              userData={userData}
             />{" "}
           </div>
         )}{" "}
