@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 
-const Form = ({ setUserData, setToggle, handleUpdate }) => {
+const Form = ({ setUserData, setToggle, handleUpdate, setHandleUpdate }) => {
   const {
     register,
     handleSubmit,
@@ -23,6 +23,7 @@ const Form = ({ setUserData, setToggle, handleUpdate }) => {
           user.id === handleUpdate.id ? { ...user, ...data } : user,
         ),
       );
+      setHandleUpdate((prev) => null);
     } else {
       // REGISTER
       const newUser = {

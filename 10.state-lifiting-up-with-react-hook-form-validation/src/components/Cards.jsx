@@ -7,9 +7,9 @@ const Cards = ({ data, setHandleUpdate, setToggle, setUserData }) => {
   };
   const handleDelete = () => {
     setUserData((prev) => prev.filter((user) => user.id != data.id));
-    if ((setUserData = {})) {
-      setToggle((prev) => !prev);
-    }
+    // if ((setUserData = {})) {
+    //   setToggle((prev) => !prev);
+    // }
   };
 
   return (
