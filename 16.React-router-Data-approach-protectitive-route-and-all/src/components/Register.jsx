@@ -3,9 +3,11 @@ import { User, Mail, Lock, UserPlus } from "lucide-react";
 import { MyStore } from "../context/MyStore";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const Register = () => {
   const { RegisterData, setRegisterData } = useContext(MyStore);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -22,7 +24,9 @@ const Register = () => {
 
     localStorage.setItem("registerUser", JSON.stringify(arr));
     toast.success("User Register Sucessfully");
+
     reset();
+    navigate("/about");
   };
 
   return (
@@ -128,7 +132,10 @@ const Register = () => {
         {/* Login */}
         <p className="text-center text-sm text-gray-500 mt-6">
           Already have an account?{" "}
-          <span className="text-blue-600 font-semibold cursor-pointer hover:underline">
+          <span
+            onClick={() => navigate("/about")}
+            className="text-blue-600 font-semibold cursor-pointer hover:underline"
+          >
             Login
           </span>
         </p>
