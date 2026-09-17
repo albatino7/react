@@ -9,7 +9,7 @@ const ProtectedLayout = () => {
 
   // Not logged in
   if (!loginData) {
-    toast.error("unable to render");
+    // toast.error("unable to render");
     return <Navigate to="/" replace />;
   }
 

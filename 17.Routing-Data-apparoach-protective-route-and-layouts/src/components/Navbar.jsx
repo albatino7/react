@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { LogOut } from "lucide-react";
 import { toast } from "react-toastify";
+import { MyStore } from "../context/MyStore";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
+  const { setLoginData } = useContext(MyStore);
+
   const handleLogout = () => {
     localStorage.removeItem("loginUser");
+
+    setLoginData(null);
 
     toast.success("Logout Successfully");
 
@@ -21,21 +26,34 @@ const Navbar = () => {
       <div className="flex flex-col gap-3">
         <NavLink
           to="/main"
-          className="px-4 py-3 rounded-lg hover:bg-slate-700 transition"
+          className={({ isActive }) =>
+            `px-4 py-3 rounded-lg transition ${
+              isActive ? "bg-indigo-600 text-white" : "hover:bg-slate-700"
+            }`
+          }
+          end
         >
           Home
         </NavLink>
 
         <NavLink
           to="/main/product"
-          className="px-4 py-3 rounded-lg hover:bg-slate-700 transition"
+          className={({ isActive }) =>
+            `px-4 py-3 rounded-lg transition ${
+              isActive ? "bg-indigo-600 text-white" : "hover:bg-slate-700"
+            }`
+          }
         >
           Product
         </NavLink>
 
         <NavLink
           to="/main/user"
-          className="px-4 py-3 rounded-lg hover:bg-slate-700 transition"
+          className={({ isActive }) =>
+            `px-4 py-3 rounded-lg transition ${
+              isActive ? "bg-indigo-600 text-white" : "hover:bg-slate-700"
+            }`
+          }
         >
           User
         </NavLink>
@@ -46,7 +64,7 @@ const Navbar = () => {
         onClick={handleLogout}
         className="mt-auto w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-red-500 hover:bg-red-600 transition font-semibold"
       >
-        <LogOut onClick={handleLogout} size={20} />
+        <LogOut size={20} />
         Logout
       </button>
     </div>
