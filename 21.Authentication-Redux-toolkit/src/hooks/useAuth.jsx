@@ -5,6 +5,14 @@ import { useNavigate } from "react-router";
 
 export const useAuth = () => {
   let navigate = useNavigate();
+
+  const RegisterFormSubmit = (data) => {
+    console.log(data);
+  };
+
+  const LoginFormSubmit = (data) => {
+    console.log(data);
+  };
   const {
     register,
     handleSubmit,
@@ -12,5 +20,13 @@ export const useAuth = () => {
     formState: { errors },
   } = useForm();
 
-  return { register, handleSubmit, reset, errors, navigate };
+  return {
+    register,
+    handleSubmit,
+    reset,
+    errors,
+    navigate,
+    RegisterFormSubmit,
+    LoginFormSubmit,
+  };
 };

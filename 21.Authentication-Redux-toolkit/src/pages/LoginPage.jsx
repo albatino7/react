@@ -3,7 +3,9 @@ import { Mail, Lock, LogIn, ArrowRight } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
 
 const LoginPage = () => {
-  const { navigate } = useAuth();
+  const { navigate, handleSubmit, errors, register, LoginFormSubmit } =
+    useAuth();
+
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
@@ -22,7 +24,7 @@ const LoginPage = () => {
 
         {/* Login Card */}
         <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-8">
-          <form className="space-y-5">
+          <form onSubmit={handleSubmit(LoginFormSubmit)} className="space-y-5">
             {/* Email */}
             <div>
               <label className="mb-2 block text-sm font-medium text-slate-300">
@@ -36,11 +38,16 @@ const LoginPage = () => {
                 />
 
                 <input
+                  {...register("email", {
+                    required: "your email is required",
+                  })}
                   type="email"
                   placeholder="you@example.com"
                   className="w-full rounded-xl border border-slate-700 bg-slate-800/70 py-3.5 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
                 />
               </div>
+
+              {errors.email && <p> {errors.email.message}</p>}
             </div>
 
             {/* Password */}
@@ -56,11 +63,16 @@ const LoginPage = () => {
                 />
 
                 <input
+                  {...register("password", {
+                    required: "your password is required",
+                  })}
                   type="password"
                   placeholder="Enter your password"
                   className="w-full rounded-xl border border-slate-700 bg-slate-800/70 py-3.5 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
                 />
               </div>
+
+              {errors.password && <p> {errors.password.message}</p>}
             </div>
 
             {/* Login Button */}
