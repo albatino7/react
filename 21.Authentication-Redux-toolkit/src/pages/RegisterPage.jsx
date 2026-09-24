@@ -3,14 +3,8 @@ import { User, Mail, Lock, UserPlus, ArrowRight } from "lucide-react";
 import { useAuth } from "../hooks/useAuth.jsx";
 
 const Register = () => {
-  const {
-    navigate,
-    register,
-    reset,
-    errors,
-    handleSubmit,
-    RegisterFormSubmit,
-  } = useAuth();
+  const { navigate, register, errors, handleSubmit, RegisterFormSubmit } =
+    useAuth();
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4 py-10">
