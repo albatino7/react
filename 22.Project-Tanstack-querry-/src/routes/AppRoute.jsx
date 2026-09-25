@@ -1,50 +1,45 @@
 import React, { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router";
-
-import RegisterPage from "../pages/RegisterPage";
-import PublicRoutes from "../layout/PublicRoutes";
+import PublicLayout from "../layout/PublicLayout";
+import RegisterPages from "../pages/RegisterPages";
 import LoginPage from "../pages/LoginPage";
-import ProtectedRoute from "../layout/ProtectedRoute";
-import Home from "../pages/Home";
+import MainLayout from "../layout/MainLayout";
+import HomePage from "../pages/HomePage";
+import ProductPage from "../pages/ProductPage";
 import AboutPage from "../pages/AboutPage";
-
-import { toast } from "react-toastify";
+import PublicProtected from "./protected/PublicProtected";
+import MainProtected from "./protected/MainProtected";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/authSlice";
-
-import PublicProtect from "./protected/PublicProtect";
-import MainProtect from "./protected/MainProtect";
+import { toast } from "react-toastify";
 
 const AppRoute = () => {
   const dispatch = useDispatch();
+  const hydarateUser = () => {
+    const locaStorage = JSON.parse(localStorage.getItem("login"));
 
-  const hydrateUser = () => {
-    const loggedInUser = JSON.parse(localStorage.getItem("login"));
-
-    if (!loggedInUser) {
-      // toast.error("login user Not Found");
-      return;
+    if (!locaStorage) {
+      return toast.error("loginUser not Found");
     }
-
-    // toast.success("REDUX updated Sucessfully");
-    dispatch(addUser(loggedInUser));
+    toast.success("Redux Updated");
+    dispatch(addUser(locaStorage));
   };
-
   useEffect(() => {
-    hydrateUser();
+    hydarateUser();
   }, []);
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <PublicProtect />,
+      element: <PublicProtected />,
       children: [
         {
-          element: <PublicRoutes />,
+          path: "",
+          element: <PublicLayout />,
           children: [
             {
               path: "",
-              element: <RegisterPage />,
+              element: <RegisterPages />,
             },
             {
               path: "login",
@@ -57,14 +52,19 @@ const AppRoute = () => {
 
     {
       path: "/main",
-      element: <MainProtect />,
+      element: <MainProtected />,
       children: [
         {
-          element: <ProtectedRoute />,
+          path: "",
+          element: <MainLayout />,
           children: [
             {
               path: "",
-              element: <Home />,
+              element: <HomePage />,
+            },
+            {
+              path: "product",
+              element: <ProductPage />,
             },
             {
               path: "about",
