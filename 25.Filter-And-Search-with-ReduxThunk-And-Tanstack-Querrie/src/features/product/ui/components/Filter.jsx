@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Search, Filter as FilterIcon, ChevronDown } from "lucide-react";
 
 import { useGetAllCategoryList } from "../../hooks/useProdcutHook";
-const Filter = ({ setCategoriesData, categoriesData }) => {
+const Filter = ({
+  setCategoriesData,
+  categoriesData,
+  searchData,
+  setSearchData,
+}) => {
   const { data } = useGetAllCategoryList();
   //   console.log(data);
 
@@ -17,6 +22,7 @@ const Filter = ({ setCategoriesData, categoriesData }) => {
           />
 
           <input
+            onChange={(e) => setSearchData(e.target.value)}
             type="text"
             placeholder="Search products..."
             className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3 pl-10 pr-4 text-sm outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#2874f0] focus:bg-white focus:ring-2 focus:ring-blue-100"
